@@ -4,6 +4,7 @@ from PIL import ImageTk
 from timeit import default_timer as timer
 import random
 import os
+from difflib import SequenceMatcher
 
 os.system("clear")
 
@@ -20,19 +21,23 @@ class Typing_Test:
         def Exit():
             self.root.destroy()
 
+        def Accuracy_Checker():
+            Question = random_word
+            Answer = Answer_entry.get()
+
+            Accuracy = (SequenceMatcher(a = Question, b = Answer).ratio()) * 100
+            return Accuracy
+
         def Check_Answer():
             Answer = Answer_entry.get()
+            End_Time = timer()
+            Total_Time = End_Time - Start_Time
+            Total_Accuracy = Accuracy_Checker()
             
-            if Answer == random_word:
-                End_Time = timer()
-                Total_Time = End_Time - Start_Time
-                messagebox.showinfo("RESULT", "YOU TOOK A TOTAL OF\n{}\nSECONDS".format(Total_Time))
-                Exit()
+            messagebox.showinfo("RESULT", "{} SECONDS\n\n{} % ACCURACY".format(Total_Time, Total_Accuracy))
+            Exit()
 
-            else:
-                messagebox.showinfo("ERROR", "INVALID WORD")
-
-        all_words = ["Programming", "Coding", "Algorithm", "Systems", "Python", "Software", "Mac Book Air", "Windows"]
+        all_words = ["Programming", "Coding", "Algorithm", "Systems", "Python", "Software", "Mac Book Air", "Windows", "Android", "Apple", "Smart Phone", "Application", "Software"]
 
         random_generator = random.randint(0, len(all_words) - 1)
         random_word = all_words[random_generator]
