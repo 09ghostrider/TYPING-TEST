@@ -14,7 +14,7 @@ class Typing_Test:
         self.root.title("TYPING TEST")
         self.root.geometry("1440x880+0+0")
 
-        self.bg_img = ImageTk.PhotoImage(file = "/Users/saniha/Dropbox/My Mac (niha का MacBook Air)/Desktop/NIKSH/IMAGES/BACKGROUNDS/bg_img_7.jpg")
+        self.bg_img = ImageTk.PhotoImage(file = "bg_img_7.jpg")
         bg = Label(self.root, image = self.bg_img)
         bg.place(x = 0, y = 120)
 
